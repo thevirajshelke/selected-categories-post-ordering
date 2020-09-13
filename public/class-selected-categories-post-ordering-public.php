@@ -20,7 +20,8 @@
  * @subpackage Selected_Categories_Post_Ordering/public
  * @author     Viraj Shelke <vrjs.29@gmail.com>
  */
-class Selected_Categories_Post_Ordering_Public {
+class Selected_Categories_Post_Ordering_Public
+{
 
 	/**
 	 * The ID of this plugin.
@@ -47,11 +48,11 @@ class Selected_Categories_Post_Ordering_Public {
 	 * @param      string    $plugin_name       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct($plugin_name, $version)
+	{
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
 	}
 
 	/**
@@ -59,7 +60,8 @@ class Selected_Categories_Post_Ordering_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -73,8 +75,7 @@ class Selected_Categories_Post_Ordering_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/selected-categories-post-ordering-public.css', array(), $this->version, 'all' );
-
+		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/selected-categories-post-ordering-public.css', array(), $this->version, 'all');
 	}
 
 	/**
@@ -82,7 +83,8 @@ class Selected_Categories_Post_Ordering_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -96,8 +98,21 @@ class Selected_Categories_Post_Ordering_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/selected-categories-post-ordering-public.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/selected-categories-post-ordering-public.js', array('jquery'), $this->version, false);
 	}
-
+	//function to modify default WordPress query
+	function order_posts_by_date_asc($query)
+	{
+		// Make sure we only modify the main query on the homepage 
+		$option_name = 'selected_categories_post_ordering_categories';
+		$categories = get_option($option_name);
+		if (!is_admin() && $query->is_main_query()) {
+			// contents of function go here
+			// Set parameters to modify the query
+			if (is_category([$categories])) {
+				$query->set('orderby', 'date');
+				$query->set('order', 'ASC');
+			}
+		}
+	}
 }

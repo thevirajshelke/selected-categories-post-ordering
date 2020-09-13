@@ -20,7 +20,8 @@
  * @subpackage Selected_Categories_Post_Ordering/includes
  * @author     Viraj Shelke <vrjs.29@gmail.com>
  */
-class Selected_Categories_Post_Ordering_Deactivator {
+class Selected_Categories_Post_Ordering_Deactivator
+{
 
 	/**
 	 * Short Description. (use period)
@@ -29,8 +30,7 @@ class Selected_Categories_Post_Ordering_Deactivator {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function deactivate() {
-
+	public static function deactivate()
+	{
 	}
-
 }

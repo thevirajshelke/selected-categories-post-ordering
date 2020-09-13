@@ -27,7 +27,8 @@
  * @subpackage Selected_Categories_Post_Ordering/includes
  * @author     Viraj Shelke <vrjs.29@gmail.com>
  */
-class Selected_Categories_Post_Ordering {
+class Selected_Categories_Post_Ordering
+{
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -66,8 +67,9 @@ class Selected_Categories_Post_Ordering {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct() {
-		if ( defined( 'SELECTED_CATEGORIES_POST_ORDERING_VERSION' ) ) {
+	public function __construct()
+	{
+		if (defined('SELECTED_CATEGORIES_POST_ORDERING_VERSION')) {
 			$this->version = SELECTED_CATEGORIES_POST_ORDERING_VERSION;
 		} else {
 			$this->version = '1.0.0';
@@ -78,7 +80,6 @@ class Selected_Categories_Post_Ordering {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-
 	}
 
 	/**
@@ -97,33 +98,33 @@ class Selected_Categories_Post_Ordering {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_dependencies() {
+	private function load_dependencies()
+	{
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-selected-categories-post-ordering-loader.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-selected-categories-post-ordering-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-selected-categories-post-ordering-i18n.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-selected-categories-post-ordering-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-selected-categories-post-ordering-admin.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-selected-categories-post-ordering-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-selected-categories-post-ordering-public.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-selected-categories-post-ordering-public.php';
 
 		$this->loader = new Selected_Categories_Post_Ordering_Loader();
-
 	}
 
 	/**
@@ -135,12 +136,12 @@ class Selected_Categories_Post_Ordering {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function set_locale() {
+	private function set_locale()
+	{
 
 		$plugin_i18n = new Selected_Categories_Post_Ordering_i18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
+		$this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
 	}
 
 	/**
@@ -150,13 +151,15 @@ class Selected_Categories_Post_Ordering {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_admin_hooks() {
+	private function define_admin_hooks()
+	{
 
-		$plugin_admin = new Selected_Categories_Post_Ordering_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Selected_Categories_Post_Ordering_Admin($this->get_plugin_name(), $this->get_version());
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
+		$this->loader->add_action('admin_menu', $plugin_admin, 'add_options_page');
+		$this->loader->add_action('admin_init', $plugin_admin, 'register_setting');
 	}
 
 	/**
@@ -166,13 +169,14 @@ class Selected_Categories_Post_Ordering {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_public_hooks() {
+	private function define_public_hooks()
+	{
 
-		$plugin_public = new Selected_Categories_Post_Ordering_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Selected_Categories_Post_Ordering_Public($this->get_plugin_name(), $this->get_version());
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
+		$this->loader->add_action('pre_get_posts', $plugin_public, 'order_posts_by_date_asc');
 	}
 
 	/**
@@ -180,7 +184,8 @@ class Selected_Categories_Post_Ordering {
 	 *
 	 * @since    1.0.0
 	 */
-	public function run() {
+	public function run()
+	{
 		$this->loader->run();
 	}
 
@@ -191,7 +196,8 @@ class Selected_Categories_Post_Ordering {
 	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
-	public function get_plugin_name() {
+	public function get_plugin_name()
+	{
 		return $this->plugin_name;
 	}
 
@@ -201,7 +207,8 @@ class Selected_Categories_Post_Ordering {
 	 * @since     1.0.0
 	 * @return    Selected_Categories_Post_Ordering_Loader    Orchestrates the hooks of the plugin.
 	 */
-	public function get_loader() {
+	public function get_loader()
+	{
 		return $this->loader;
 	}
 
@@ -211,8 +218,8 @@ class Selected_Categories_Post_Ordering {
 	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
 	 */
-	public function get_version() {
+	public function get_version()
+	{
 		return $this->version;
 	}
-
 }

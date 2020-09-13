@@ -25,7 +25,11 @@
  * @package    Selected_Categories_Post_Ordering
  */
 
+$option_name = 'selected_categories_post_ordering_categories';
+
 // If uninstall not called from WordPress, then exit.
-if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+if (!defined('WP_UNINSTALL_PLUGIN')) {
 	exit;
 }
+
+delete_option($option_name);

@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Selected Categories Post Ordering
  * Plugin URI:        https://wordpress.org/plugins/selected-categories-post-ordering
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Simple plugin to change the order of your posts for selected categories (As of now the order is cronological! More options coming soon).
  * Version:           1.0.0
  * Author:            Viraj Shelke
  * Author URI:        https:://www.thevirajshelke.com
@@ -26,7 +26,7 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if (!defined('WPINC')) {
 	die;
 }
 
@@ -35,14 +35,15 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'SELECTED_CATEGORIES_POST_ORDERING_VERSION', '1.0.0' );
+define('SELECTED_CATEGORIES_POST_ORDERING_VERSION', '1.0.0');
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-selected-categories-post-ordering-activator.php
  */
-function activate_selected_categories_post_ordering() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-selected-categories-post-ordering-activator.php';
+function activate_selected_categories_post_ordering()
+{
+	require_once plugin_dir_path(__FILE__) . 'includes/class-selected-categories-post-ordering-activator.php';
 	Selected_Categories_Post_Ordering_Activator::activate();
 }
 
@@ -50,19 +51,20 @@ function activate_selected_categories_post_ordering() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-selected-categories-post-ordering-deactivator.php
  */
-function deactivate_selected_categories_post_ordering() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-selected-categories-post-ordering-deactivator.php';
+function deactivate_selected_categories_post_ordering()
+{
+	require_once plugin_dir_path(__FILE__) . 'includes/class-selected-categories-post-ordering-deactivator.php';
 	Selected_Categories_Post_Ordering_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_selected_categories_post_ordering' );
-register_deactivation_hook( __FILE__, 'deactivate_selected_categories_post_ordering' );
+register_activation_hook(__FILE__, 'activate_selected_categories_post_ordering');
+register_deactivation_hook(__FILE__, 'deactivate_selected_categories_post_ordering');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-selected-categories-post-ordering.php';
+require plugin_dir_path(__FILE__) . 'includes/class-selected-categories-post-ordering.php';
 
 /**
  * Begins execution of the plugin.
@@ -73,10 +75,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-selected-categories-post-o
  *
  * @since    1.0.0
  */
-function run_selected_categories_post_ordering() {
+function run_selected_categories_post_ordering()
+{
 
 	$plugin = new Selected_Categories_Post_Ordering();
 	$plugin->run();
-
 }
 run_selected_categories_post_ordering();
