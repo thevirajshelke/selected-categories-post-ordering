@@ -1,8 +1,11 @@
 === Plugin Name ===
+Selected Categories Post Ordering
+
 Contributors: thevirajshelke
 Donate link: https:://www.thevirajshelke.com
 Tags: order, posts, cronological, order posts, categories
 Requires at least: 3.0.1
+Requires PHP: 7.0
 Tested up to: 5.5.1
 Stable tag: 1.0
 License: GPLv2 or later
