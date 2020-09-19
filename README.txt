@@ -15,7 +15,9 @@ Simple plugin to change the order of your posts for selected categories! Posts o
 == Description ==
 
 Simple plugin to change the order of your posts to chronological for selected categories! Posts of selected categories will be displayed in chronological order instead of reverse-chronological.
+
 This can be useful for sites that have some tutorials, historical content (which is to be displayed in the order it was published), journals, books, etc. where the content is intended to be shown chronologically, along with some other regular posts where we need the order to default i.e. reverse-chronological.
+
 So if your site needs to display some posts in chronological order and some in reverse-chronological this plugin is for you. All you need to do is just segregate the posts into categories & install this plugin!
 
 == Installation ==
@@ -29,13 +31,17 @@ So if your site needs to display some posts in chronological order and some in r
 
 = How do I use it? =
 
-Once you have installed the plugin (check [Installation](https://wordpress.org/plugins/chronological-posts/#installation)), activate the plugin and go to settings > selected categories post settings and on this page select the categories where you want to change the post order and save changes.
+Once you have installed the plugin (check [Installation](https://wordpress.org/plugins/selected-categories-post-ordering/#installation)), activate the plugin and go to settings > selected categories post settings and on this page select the categories where you want to change the post order and save changes.
+
 Voila! That's it! It's as simple as that :)
+
 I hope you love this plugin! Don't forget to rate the plugin and submit your valuable review :)
 
 = I want to reach out to the developer =
 If you face any issues or want to report any bugs you can go to the GitHub Repo [here](https://github.com/thevirajshelke/selected-categories-post-ordering).
-You can also check out my blog https://thevirajshelke.com for connecting with me :)
+
+You can also check out my blog [https://thevirajshelke.com](https://thevirajshelke.com) for connecting with me :)
+
 Don't forget to rate the plugin and submit your valuable review :)
 
 == Changelog ==
