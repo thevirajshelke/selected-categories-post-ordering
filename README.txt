@@ -6,7 +6,7 @@ Donate link: https://www.thevirajshelke.com
 Tags: posts ordering, sort, post order, post sort, chronological, posts order, posts sort, categories posts order, custom post order, reorder, selective ordering, reverse post order
 Requires at least: 3.0.1
 Tested up to: 5.5.1
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,11 +39,18 @@ You can also check out my blog https://thevirajshelke.com for connecting with me
 Don't forget to rate the plugin and submit your valuable review :)
 
 == Changelog ==
+= 1.1.0 =
+* changed the settings page from text field to more interactive with category names and checkboxes
+* implementation changes
+* major bug fixes
 
 = 1.0.0 =
 * First Release
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+* Major implementation, settings changes. Mandatory Upgrade!
 
 = 1.0.0 =
 * First Release
