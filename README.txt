@@ -2,56 +2,48 @@
 Selected Categories Post Ordering
 
 Contributors: thevirajshelke
-Donate link: https:://www.thevirajshelke.com
-Tags: order, posts, cronological, order posts, categories
+Donate link: https://www.thevirajshelke.com
+Tags: posts ordering, sort, post order, post sort, chronological, posts order, posts sort, categories posts order, custom post order, reorder, selective ordering, reverse post order
 Requires at least: 3.0.1
-Requires PHP: 7.0
 Tested up to: 5.5.1
-Stable tag: 1.0
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Simple plugin to change the order of your posts for selected categories (As of now the order is cronological! More options coming soon).
+Simple plugin to change the order of your posts for selected categories! Posts of selected categories will be displayed in chronological order.
 
 == Description ==
 
-Simple plugin to change the order of your posts for selected categories (As of now the order is cronological! More options coming soon).
+Simple plugin to change the order of your posts to chronological for selected categories! Posts of selected categories will be displayed in chronological order instead of reverse-chronological.
+This can be useful for sites that have some tutorials, historical content (which is to be displayed in the order it was published), journals, books, etc. where the content is intended to be shown chronologically, along with some other regular posts where we need the order to default i.e. reverse-chronological.
+So if your site needs to display some posts in chronological order and some in reverse-chronological this plugin is for you. All you need to do is just segregate the posts into categories & install this plugin!
 
 == Installation ==
 
-1. Upload `selected-categories-post-ordering.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Go to Selected Categories Post Ordering settings and add the categories whose posts order you want to change.
+1. Take the easy route and install through the WordPress plugin installer, or,
+2. Download the .zip file and upload the unzipped folder to the /wp-content/plugins/ directory
+3. Activate the plugin through the ‘Plugins’ menu in WordPress
+4. Go to Selected Categories Post Ordering settings and check the categories whose posts order you want to change.
 
 == Frequently Asked Questions ==
 
-= What is this plugin all about? =
+= How do I use it? =
 
-WordPress will show the post on the site in a specific order which is newest first. In most of the cases this
-ordering is great! But say for example I have a specific categories of posts like "XYZ Tutorials" where I don't
-want the post in the newest first order! Rather I would prefer it in the cronological order so that user finds it easy
-to follow. This could be acheived by modifying some code in the WordPress queries but that's tricky! So I came up with
-a simple plugin which when you install can change the order of specific category post to cronological. All you have to 
-do is just mention the categories in the settings page.
+Once you have installed the plugin (check [Installation](https://wordpress.org/plugins/chronological-posts/#installation)), activate the plugin and go to settings > selected categories post settings and on this page select the categories where you want to change the post order and save changes.
+Voila! That's it! It's as simple as that :)
+I hope you love this plugin! Don't forget to rate the plugin and submit your valuable review :)
 
-= I want to reach out to the developer and know more! =
-
-Check out the GitHub Repo [here](https://github.com/thevirajshelke/selected-categories-post-ordering).
-
-== Screenshots ==
-
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+= I want to reach out to the developer =
+If you face any issues or want to report any bugs you can go to the GitHub Repo [here](https://github.com/thevirajshelke/selected-categories-post-ordering).
+You can also check out my blog https://thevirajshelke.com for connecting with me :)
+Don't forget to rate the plugin and submit your valuable review :)
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.0 =
 * First Release
 
 == Upgrade Notice ==
 
-= 1.0 =
+= 1.0.0 =
 * First Release

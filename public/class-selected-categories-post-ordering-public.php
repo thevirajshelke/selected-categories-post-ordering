@@ -100,16 +100,25 @@ class Selected_Categories_Post_Ordering_Public
 
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/selected-categories-post-ordering-public.js', array('jquery'), $this->version, false);
 	}
+
+	function get_categories_whose_order_changed()
+	{
+		$categories_whose_order_we_need_to_reverse = array();
+		$scpo_options = get_option('scpo_options');
+		foreach ($scpo_options as $scpo_option => $val){
+			if($val == "1"){
+				array_push($categories_whose_order_we_need_to_reverse, $scpo_option);
+			}
+		}
+		return $categories_whose_order_we_need_to_reverse;
+	}
+
 	//function to modify default WordPress query
 	function order_posts_by_date_asc($query)
-	{
-		// Make sure we only modify the main query on the homepage 
-		$option_name = 'selected_categories_post_ordering_categories';
-		$categories = get_option($option_name);
+	{		
+		$categories  = $this -> get_categories_whose_order_changed();
 		if (!is_admin() && $query->is_main_query()) {
-			// contents of function go here
-			// Set parameters to modify the query
-			if (is_category([$categories])) {
+			if (count($categories) !== 0 && is_category($categories)) {
 				$query->set('orderby', 'date');
 				$query->set('order', 'ASC');
 			}

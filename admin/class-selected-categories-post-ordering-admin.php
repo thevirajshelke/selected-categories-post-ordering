@@ -42,15 +42,6 @@ class Selected_Categories_Post_Ordering_Admin
 	private $version;
 
 	/**
-	 * The options name to be used in this plugin
-	 *
-	 * @since  	1.0.0
-	 * @access 	private
-	 * @var  	string 		$option_name 	Option name of this plugin
-	 */
-	private $option_name = 'selected_categories_post_ordering';
-
-	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -111,7 +102,7 @@ class Selected_Categories_Post_Ordering_Admin
 	}
 
 	/**
-	 * Add an options page under the Settings submenu
+	 * Add an options page under the Settings sub menu
 	 *
 	 * @since  1.0.0
 	 */
@@ -119,8 +110,8 @@ class Selected_Categories_Post_Ordering_Admin
 	{
 
 		$this->plugin_screen_hook_suffix = add_options_page(
-			__('Selected Category Post Ordering Settings', 'selected-categories-post-ordering'),
-			__('Selected Category Post Ordering', 'selected-categories-post-ordering'),
+			__('Selected Categories Post Ordering Settings', 'selected-categories-post-ordering'),
+			__('Selected Categories Post Ordering', 'selected-categories-post-ordering'),
 			'manage_options',
 			$this->plugin_name,
 			array($this, 'display_options_page')
@@ -144,24 +135,31 @@ class Selected_Categories_Post_Ordering_Admin
 	 */
 	public function register_setting()
 	{
+		add_option('scpo_options');
+		register_setting($this->plugin_name, 'scpo_options');
+
 		// Add a General section
 		add_settings_section(
-			$this->option_name . '_general',
-			__('General', 'selected-categories-post-ordering'),
-			array($this, $this->option_name . '_general_cb'),
+			 'selected_categories_post_ordering_general',
+			__('General Settings', 'selected-categories-post-ordering'),
+			array($this, 'selected_categories_post_ordering_general_cb'),
 			$this->plugin_name
 		);
 
-		add_settings_field(
-			$this->option_name . '_categories',
-			__('Enter the categories seperated with comma', 'selected-categories-post-ordering'),
-			array($this, $this->option_name . '_categories_cb'),
-			$this->plugin_name,
-			$this->option_name . '_general',
-			array('label_for' => $this->option_name . '_categories')
-		);
+		$categories = get_categories();
 
-		register_setting($this->plugin_name, $this->option_name . '_categories', array($this, $this->option_name . '_sanitize_categories'));
+		foreach ($categories as $category) {
+			add_settings_field(
+				$category->slug . '-category',
+				__($category->name, 'selected-categories-post-ordering'),
+				array($this, 'selected_categories_post_ordering_category_cb'),
+				$this->plugin_name,
+				'selected_categories_post_ordering_general',
+				array('label_for' => $category->slug.'-category', 'name' => $category->name, 'slug' => $category->slug)
+			);
+
+			register_setting($this->plugin_name, `scpo_options[$category->slug]`);
+		}
 	}
 	/**
 	 * Render the text for the general section
@@ -170,30 +168,17 @@ class Selected_Categories_Post_Ordering_Admin
 	 */
 	public function selected_categories_post_ordering_general_cb()
 	{
-		echo '<p>' . __('Please change the settings accordingly.', 'selected-categories-post-ordering') . '</p>';
+		echo '<p>' . __('Select the categories where you want the post order as chronological. <br>Remaining categories will have the default behaviour.', 'selected-categories-post-ordering') . '</p>';
 	}
 
 	/**
-	 * Render the treshold day input for this plugin
+	 * Render the categories input fields for this plugin
 	 *
 	 * @since  1.0.0
 	 */
-	public function selected_categories_post_ordering_categories_cb()
+	public function selected_categories_post_ordering_category_cb(array $args)
 	{
-		$categories = get_option($this->option_name . '_categories');
-		echo '<input type="text" name="' . $this->option_name . '_categories' . '" id="' . $this->option_name . '_categories' . '" value="' . $categories . '"> ' . __('categories', 'selected-categories-post-ordering');
-	}
-
-	/**
-	 * Sanitize the text position value before being saved to database
-	 *
-	 * @param  string $position $_POST value
-	 * @since  1.0.0
-	 * @return string           Sanitized value
-	 */
-	public function selected_categories_post_ordering_sanitize_categories($categories)
-	{
-		// TODO
-		return $categories;
+		$options = get_option('scpo_options');
+		echo '<input type="checkbox" name="scpo_options[' . $args['slug'] . ']' . '" id="' . $args['slug'] . '-category' . '" value="1" ' .  checked(1, $options[$args['slug']], false) . '"> ';
 	}
 }
