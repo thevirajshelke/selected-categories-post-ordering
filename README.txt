@@ -3,10 +3,10 @@ Selected Categories Post Ordering
 
 Contributors: thevirajshelke
 Donate link: https://www.thevirajshelke.com
-Tags: posts ordering, sort, post order, post sort, chronological, posts order, posts sort, categories posts order, custom post order, reorder, selective ordering, reverse post order
+Tags: chronological, posts order, posts sort, categories posts ordering, reverse post order
 Requires at least: 3.0.1
 Tested up to: 5.5.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,7 +44,17 @@ You can also check out my blog [https://thevirajshelke.com](https://thevirajshel
 
 Don't forget to rate the plugin and submit your valuable review :)
 
+= What's coming up? =
+- Settings
+  - New option in  to select all categories
+  - New option in settings to reverse post order on complete website
+
+Note:- Thinking of adding more sorting/ordering options category wise (suggestions & feedback needed)
+
 == Changelog ==
+= 1.1.1 = 
+* bug fix (performance improvement - avoid the plugin execution if it's not a category page)
+
 = 1.1.0 =
 * changed the settings page from text field to more interactive with category names and checkboxes
 * implementation changes
@@ -54,6 +64,9 @@ Don't forget to rate the plugin and submit your valuable review :)
 * First Release
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+* bug fix 
 
 = 1.1.0 =
 * Major implementation, settings changes. Mandatory Upgrade!

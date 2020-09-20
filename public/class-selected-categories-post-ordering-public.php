@@ -116,9 +116,17 @@ class Selected_Categories_Post_Ordering_Public
 	//function to modify default WordPress query
 	function order_posts_by_date_asc($query)
 	{		
-		$categories  = $this -> get_categories_whose_order_changed();
-		if (!is_admin() && $query->is_main_query()) {
+		// - check if current request is not for admin page
+		// - check if the current page is a category page
+		// - check if the query executed is the main query
+		if (!is_admin() && is_category() && $query->is_main_query()) {
+			// fetch all the categories that are checked in the SCPO settings page
+			$categories  = $this -> get_categories_whose_order_changed();
+			// - check if categories are present because passing a blank array yields true if it's category page
+			// and we don't need the following code to be executed in that case
+			// - check if the category is the one that the user has checked in the settings page
 			if (count($categories) !== 0 && is_category($categories)) {
+				// reversing the order in which the posts are displayed
 				$query->set('orderby', 'date');
 				$query->set('order', 'ASC');
 			}

@@ -16,7 +16,7 @@
  * Plugin Name:       Selected Categories Post Ordering
  * Plugin URI:        https://wordpress.org/plugins/selected-categories-post-ordering
  * Description:       Simple plugin to change the order of your posts for selected categories! Posts of selected categories will be displayed in chronological order. 
- * Version:           1.1.0
+ * Version:           1.1.1
  * Author:            Viraj Shelke
  * Author URI:        https://www.thevirajshelke.com
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if (!defined('WPINC')) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('SELECTED_CATEGORIES_POST_ORDERING_VERSION', '1.1.0');
+define('SELECTED_CATEGORIES_POST_ORDERING_VERSION', '1.1.1');
 
 /**
  * The code that runs during plugin activation.
