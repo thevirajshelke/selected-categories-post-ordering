@@ -46,8 +46,8 @@ Don't forget to rate the plugin and submit your valuable review :)
 
 = What's coming up? =
 - Settings
-  - New option in  to select all categories
-  - New option in settings to reverse post order on complete website
+  - New option to select all categories
+  - New option to reverse post order on complete website
 
 Note:- Thinking of adding more sorting/ordering options category wise (suggestions & feedback needed)
 
